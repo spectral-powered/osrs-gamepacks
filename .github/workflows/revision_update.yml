@@ -65,7 +65,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./out/gamepack.jar
-          asset_name: gamepack-${{ needs.fetch_revisions.outputs.latest_rev }}.jar
+          asset_name: gamepack.jar
           asset_content_type: application/zip
   fetch_revisions:
     name: Fetch Revisions
