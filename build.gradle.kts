@@ -25,4 +25,5 @@ application {
 tasks.shadowJar {
     archiveVersion.set("")
     archiveClassifier.set("")
+    archivesName.set("gamepack-downloader")
 }
