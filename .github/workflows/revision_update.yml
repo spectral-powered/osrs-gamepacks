@@ -29,15 +29,15 @@ jobs:
           export CURRENT_REV=$(git describe --abbrev=0 --tags)
           current="$CURRENT_REV"
           latest="$LATEST_REV"
-
-          if [ "$current" = "$latest" ]; then
-            echo "Repository revision is up-to-date. Current: $CURRENT_REV, Latest: $LATEST_REV"
-            echo "::set-output name=create-release::FALSE"
-            echo "CREATE_RELEASE=FALSE" >> "$GITHUB_ENV"
-          else
+          
+          if [ "$current" != "$latest" ]; then
             echo "Repository revision release is out-of-date. Current: $CURRENT_REV, Latest: $LATEST_REV"
             echo "::set-output name=create-release::TRUE"
             echo "CREATE_RELEASE=TRUE" >> "$GITHUB_ENV"
+          else
+            echo "Repository revision is up-to-date. Current: $CURRENT_REV, Latest: $LATEST_REV"
+            echo "::set-output name=create-release::FALSE"
+            echo "CREATE_RELEASE=FALSE" >> "$GITHUB_ENV"
           fi
         shell: bash
       - name: Download Latest Gamepack Revision
